@@ -10,14 +10,6 @@ services:
         arguments:
             - '@dms.filter.inner.filter'
 
-    DMS\Bundle\FilterBundle\Form\Type\FormTypeFilterExtension:
-        public: true
-        arguments:
-            - '@DMS\Bundle\FilterBundle\Service\Filter'
-            - '%dms_filter.auto_filter_forms%'
-        tags:
-            - { name: form.type_extension, alias: Symfony\Component\Form\Extension\Core\Type\FormType, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType }
-
     DMS\Bundle\FilterBundle\Loader\ContainerAwareLoader:
         calls:
          - [ setContainer,  ['@service_container'] ]
